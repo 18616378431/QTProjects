@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>626</width>
+    <height>435</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>591</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>表格数据文件</string>
+     </attribute>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>571</width>
+        <height>291</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>626</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actReset"/>
+   <addaction name="actOpenStm"/>
+   <addaction name="actSaveStm"/>
+   <addaction name="separator"/>
+   <addaction name="actiOpenBin"/>
+   <addaction name="actSaveBin"/>
+   <addaction name="separator"/>
+   <addaction name="actAppend"/>
+   <addaction name="actInsert"/>
+   <addaction name="actDelete"/>
+   <addaction name="separator"/>
+   <addaction name="actQuit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actReset">
+   <property name="text">
+    <string>表格复位</string>
+   </property>
+   <property name="toolTip">
+    <string>表格复位</string>
+   </property>
+  </action>
+  <action name="actOpenStm">
+   <property name="text">
+    <string>打开stm文件</string>
+   </property>
+   <property name="toolTip">
+    <string>打开stm文件</string>
+   </property>
+  </action>
+  <action name="actSaveStm">
+   <property name="text">
+    <string>保存stm文件</string>
+   </property>
+   <property name="toolTip">
+    <string>保存stm文件</string>
+   </property>
+  </action>
+  <action name="actiOpenBin">
+   <property name="text">
+    <string>打开dat文件</string>
+   </property>
+   <property name="toolTip">
+    <string>打开dat文件</string>
+   </property>
+  </action>
+  <action name="actSaveBin">
+   <property name="text">
+    <string>保存dat文件</string>
+   </property>
+   <property name="toolTip">
+    <string>保存dat文件</string>
+   </property>
+  </action>
+  <action name="actAppend">
+   <property name="text">
+    <string>添加行</string>
+   </property>
+   <property name="toolTip">
+    <string>添加行</string>
+   </property>
+  </action>
+  <action name="actInsert">
+   <property name="text">
+    <string>插入行</string>
+   </property>
+   <property name="toolTip">
+    <string>插入行</string>
+   </property>
+  </action>
+  <action name="actDelete">
+   <property name="text">
+    <string>删除行</string>
+   </property>
+   <property name="toolTip">
+    <string>删除行</string>
+   </property>
+  </action>
+  <action name="actQuit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+   <property name="toolTip">
+    <string>退出</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

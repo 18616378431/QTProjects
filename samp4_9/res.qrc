@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>AppIcon.icns</file>
+        <file>compass.icns</file>
+    </qresource>
+</RCC>
