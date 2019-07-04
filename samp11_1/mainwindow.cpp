@@ -184,7 +184,7 @@ void MainWindow::getFieldNames()
 
     for(int i = 0;i < emptyRec.count();i++)
     {
-        ui->comboField->addItem(emptyRec.fieldName(i));
+        ui->comboFields->addItem(emptyRec.fieldName(i));
     }
 }
 
@@ -239,4 +239,108 @@ void MainWindow::on_actRevert_triggered()
     tabModel->revertAll();
     ui->actSubmit->setEnabled(false);
     ui->actRevert->setEnabled(false);
+}
+
+void MainWindow::on_actPhoto_triggered()
+{
+    //设置照片
+    QString aFile = QFileDialog::getOpenFileName(this,"选择图片","","照片(*.jpg)");
+
+    if(aFile.isEmpty())
+    {
+        return ;
+    }
+
+    QByteArray data;
+    QFile *file = new QFile(aFile);
+    file->open(QIODevice::ReadOnly);
+    data = file->readAll();
+    file->close();
+    int curRecNo = theSelection->currentIndex().row();
+    QSqlRecord curRec = tabModel->record(curRecNo);//获取当前记录
+    curRec.setValue("Photo",data);//设置字段数据
+    tabModel->setRecord(curRecNo,curRec);
+    QPixmap pic;
+    pic.load(aFile);//在界面上显示
+    ui->dbLabPhoto->setPixmap(pic.scaledToWidth(ui->dbLabPhoto->width()));
+}
+
+void MainWindow::on_actPhotoClear_triggered()
+{
+    //清除照片
+    int curRecNo = theSelection->currentIndex().row();
+    QSqlRecord curRec = tabModel->record(curRecNo);//获取当前记录
+    curRec.setNull("Photo");//设置为空值
+    tabModel->setRecord(curRecNo,curRec);
+    ui->dbLabPhoto->clear();
+}
+
+void MainWindow::on_actScan_triggered()
+{
+    //涨工资
+    if(tabModel->rowCount() == 0)
+    {
+        return ;
+    }
+
+    QSqlRecord aRec;
+
+    for(int i = 0;i < tabModel->rowCount();i++)
+    {
+        aRec = tabModel->record(i);//获取当前记录
+        float salary = aRec.value("Salary").toFloat();
+        salary *= 1.1;
+        aRec.setValue("Salary",salary);
+        tabModel->setRecord(i,aRec);
+    }
+
+    if(tabModel->submitAll())
+    {
+        QMessageBox::information(this,"消息","涨工资计算完毕",QMessageBox::Ok,QMessageBox::NoButton);
+    }
+}
+
+
+void MainWindow::on_comboFields_currentIndexChanged(int index)
+{
+    //选择字段进行排序
+    if(ui->radioBtnAscend->isChecked())
+    {
+        tabModel->setSort(index,Qt::AscendingOrder);
+    }
+    else
+    {
+        tabModel->setSort(index,Qt::DescendingOrder);
+    }
+    tabModel->select();
+}
+
+void MainWindow::on_radioBtnAscend_clicked()
+{
+    //升序
+    tabModel->setSort(ui->comboFields->currentIndex(),Qt::AscendingOrder);
+    tabModel->select();
+}
+
+
+void MainWindow::on_radioBtnDescend_clicked()
+{
+    //降序
+    tabModel->setSort(ui->comboFields->currentIndex(),Qt::DescendingOrder);
+    tabModel->select();
+}
+
+void MainWindow::on_radioBtnMan_clicked()
+{
+    tabModel->setFilter(" Gender='男'");
+}
+
+void MainWindow::on_radioBtnWoman_clicked()
+{
+    tabModel->setFilter(" Gender='女'");
+}
+
+void MainWindow::on_radioBtnBoth_clicked()
+{
+    tabModel->setFilter("");
 }

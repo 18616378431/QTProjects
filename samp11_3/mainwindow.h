@@ -1,0 +1,33 @@
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
+#include <QMainWindow>
+#include <QtSql>
+
+#include "wdialog.h"
+
+namespace Ui {
+class MainWindow;
+}
+
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+private:
+    QSqlDatabase DB;//数据库
+    QSqlQueryModel *qryModel;//数据库模型
+    QItemSelectionModel *theSelection;//选择模型
+    void openTable();//打开数据表
+//    void updateRecord(int recNo);//更新记录
+public:
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
+
+private slots:
+    void on_actOpenDB_triggered();
+
+private:
+    Ui::MainWindow *ui;
+};
+
+#endif // MAINWINDOW_H

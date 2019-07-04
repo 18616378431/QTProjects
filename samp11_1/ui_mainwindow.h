@@ -54,17 +54,17 @@ public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QGroupBox *groupBoxSort;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout;
-    QRadioButton *radioButton_2;
-    QComboBox *comboField;
+    QRadioButton *radioBtnDescend;
+    QComboBox *comboFields;
     QLabel *label;
     QLabel *label_3;
     QLabel *label_2;
-    QRadioButton *radioButton;
-    QRadioButton *radioButton_3;
-    QRadioButton *radioButton_4;
-    QRadioButton *radioButton_5;
+    QRadioButton *radioBtnAscend;
+    QRadioButton *radioBtnMan;
+    QRadioButton *radioBtnWoman;
+    QRadioButton *radioBtnBoth;
     QTableView *tableView;
     QWidget *formLayoutWidget;
     QFormLayout *formLayout;
@@ -144,59 +144,59 @@ public:
         groupBoxSort = new QGroupBox(layoutWidget);
         groupBoxSort->setObjectName(QStringLiteral("groupBoxSort"));
         groupBoxSort->setMinimumSize(QSize(0, 100));
-        widget = new QWidget(groupBoxSort);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(0, 20, 422, 71));
-        gridLayout = new QGridLayout(widget);
+        layoutWidget1 = new QWidget(groupBoxSort);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(0, 20, 422, 81));
+        gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        radioButton_2 = new QRadioButton(widget);
-        radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        radioBtnDescend = new QRadioButton(layoutWidget1);
+        radioBtnDescend->setObjectName(QStringLiteral("radioBtnDescend"));
 
-        gridLayout->addWidget(radioButton_2, 2, 1, 1, 1);
+        gridLayout->addWidget(radioBtnDescend, 2, 1, 1, 1);
 
-        comboField = new QComboBox(widget);
-        comboField->setObjectName(QStringLiteral("comboField"));
+        comboFields = new QComboBox(layoutWidget1);
+        comboFields->setObjectName(QStringLiteral("comboFields"));
 
-        gridLayout->addWidget(comboField, 1, 1, 1, 1);
+        gridLayout->addWidget(comboFields, 1, 1, 1, 1);
 
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget1);
         label->setObjectName(QStringLiteral("label"));
 
         gridLayout->addWidget(label, 0, 0, 1, 1);
 
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         gridLayout->addWidget(label_3, 1, 0, 1, 1);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         gridLayout->addWidget(label_2, 0, 2, 1, 1);
 
-        radioButton = new QRadioButton(widget);
-        radioButton->setObjectName(QStringLiteral("radioButton"));
-        radioButton->setChecked(true);
+        radioBtnAscend = new QRadioButton(layoutWidget1);
+        radioBtnAscend->setObjectName(QStringLiteral("radioBtnAscend"));
+        radioBtnAscend->setChecked(true);
 
-        gridLayout->addWidget(radioButton, 2, 0, 1, 1);
+        gridLayout->addWidget(radioBtnAscend, 2, 0, 1, 1);
 
-        radioButton_3 = new QRadioButton(widget);
-        radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
+        radioBtnMan = new QRadioButton(layoutWidget1);
+        radioBtnMan->setObjectName(QStringLiteral("radioBtnMan"));
 
-        gridLayout->addWidget(radioButton_3, 1, 2, 1, 1);
+        gridLayout->addWidget(radioBtnMan, 1, 2, 1, 1);
 
-        radioButton_4 = new QRadioButton(widget);
-        radioButton_4->setObjectName(QStringLiteral("radioButton_4"));
+        radioBtnWoman = new QRadioButton(layoutWidget1);
+        radioBtnWoman->setObjectName(QStringLiteral("radioBtnWoman"));
 
-        gridLayout->addWidget(radioButton_4, 1, 3, 1, 1);
+        gridLayout->addWidget(radioBtnWoman, 1, 3, 1, 1);
 
-        radioButton_5 = new QRadioButton(widget);
-        radioButton_5->setObjectName(QStringLiteral("radioButton_5"));
+        radioBtnBoth = new QRadioButton(layoutWidget1);
+        radioBtnBoth->setObjectName(QStringLiteral("radioBtnBoth"));
 
-        gridLayout->addWidget(radioButton_5, 2, 2, 1, 1);
+        gridLayout->addWidget(radioBtnBoth, 2, 2, 1, 1);
 
 
         verticalLayout->addWidget(groupBoxSort);
@@ -434,18 +434,18 @@ public:
         actQuit->setToolTip(QApplication::translate("MainWindow", "\351\200\200\345\207\272", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         groupBoxSort->setTitle(QApplication::translate("MainWindow", "GroupBox", Q_NULLPTR));
-        radioButton_2->setText(QApplication::translate("MainWindow", "\351\231\215\345\272\217", Q_NULLPTR));
-        comboField->clear();
-        comboField->insertItems(0, QStringList()
+        radioBtnDescend->setText(QApplication::translate("MainWindow", "\351\231\215\345\272\217", Q_NULLPTR));
+        comboFields->clear();
+        comboFields->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "empNo", Q_NULLPTR)
         );
         label->setText(QApplication::translate("MainWindow", "\346\216\222\345\272\217", Q_NULLPTR));
         label_3->setText(QApplication::translate("MainWindow", "\346\216\222\345\272\217\345\255\227\346\256\265", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "\346\225\260\346\215\256\350\277\207\346\273\244", Q_NULLPTR));
-        radioButton->setText(QApplication::translate("MainWindow", "\345\215\207\345\272\217", Q_NULLPTR));
-        radioButton_3->setText(QApplication::translate("MainWindow", "\347\224\267", Q_NULLPTR));
-        radioButton_4->setText(QApplication::translate("MainWindow", "\345\245\263", Q_NULLPTR));
-        radioButton_5->setText(QApplication::translate("MainWindow", "\345\205\250\346\230\276\347\244\272", Q_NULLPTR));
+        radioBtnAscend->setText(QApplication::translate("MainWindow", "\345\215\207\345\272\217", Q_NULLPTR));
+        radioBtnMan->setText(QApplication::translate("MainWindow", "\347\224\267", Q_NULLPTR));
+        radioBtnWoman->setText(QApplication::translate("MainWindow", "\345\245\263", Q_NULLPTR));
+        radioBtnBoth->setText(QApplication::translate("MainWindow", "\345\205\250\346\230\276\347\244\272", Q_NULLPTR));
         label_4->setText(QApplication::translate("MainWindow", "\345\267\245\345\217\267", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "\345\247\223\345\220\215", Q_NULLPTR));
         label_6->setText(QApplication::translate("MainWindow", "\346\200\247\345\210\253", Q_NULLPTR));

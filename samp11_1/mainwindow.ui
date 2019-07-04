@@ -43,25 +43,25 @@
          <property name="title">
           <string>GroupBox</string>
          </property>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>20</y>
             <width>422</width>
-            <height>71</height>
+            <height>81</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout">
            <item row="2" column="1">
-            <widget class="QRadioButton" name="radioButton_2">
+            <widget class="QRadioButton" name="radioBtnDescend">
              <property name="text">
               <string>降序</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QComboBox" name="comboField">
+            <widget class="QComboBox" name="comboFields">
              <item>
               <property name="text">
                <string>empNo</string>
@@ -91,7 +91,7 @@
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QRadioButton" name="radioButton">
+            <widget class="QRadioButton" name="radioBtnAscend">
              <property name="text">
               <string>升序</string>
              </property>
@@ -101,21 +101,21 @@
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="QRadioButton" name="radioButton_3">
+            <widget class="QRadioButton" name="radioBtnMan">
              <property name="text">
               <string>男</string>
              </property>
             </widget>
            </item>
            <item row="1" column="3">
-            <widget class="QRadioButton" name="radioButton_4">
+            <widget class="QRadioButton" name="radioBtnWoman">
              <property name="text">
               <string>女</string>
              </property>
             </widget>
            </item>
            <item row="2" column="2">
-            <widget class="QRadioButton" name="radioButton_5">
+            <widget class="QRadioButton" name="radioBtnBoth">
              <property name="text">
               <string>全显示</string>
              </property>
