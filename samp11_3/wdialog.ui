@@ -242,7 +242,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="btnOk">
       <property name="text">
        <string>确定</string>
       </property>
@@ -263,7 +263,7 @@
      </widget>
     </item>
     <item row="3" column="0">
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="btnCancel">
       <property name="text">
        <string>取消</string>
       </property>
@@ -273,5 +273,38 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnOk</sender>
+   <signal>clicked()</signal>
+   <receiver>WDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>570</x>
+     <y>120</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>323</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>WDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>570</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>323</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

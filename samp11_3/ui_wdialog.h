@@ -63,10 +63,10 @@ public:
     QLabel *dbLabPhoto;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
-    QPushButton *pushButton_3;
+    QPushButton *btnOk;
     QPushButton *btnClearPhoto;
     QPushButton *btnSetPhoto;
-    QPushButton *pushButton_4;
+    QPushButton *btnCancel;
 
     void setupUi(QDialog *WDialog)
     {
@@ -226,10 +226,10 @@ public:
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_3 = new QPushButton(gridLayoutWidget);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        btnOk = new QPushButton(gridLayoutWidget);
+        btnOk->setObjectName(QStringLiteral("btnOk"));
 
-        gridLayout->addWidget(pushButton_3, 2, 0, 1, 1);
+        gridLayout->addWidget(btnOk, 2, 0, 1, 1);
 
         btnClearPhoto = new QPushButton(gridLayoutWidget);
         btnClearPhoto->setObjectName(QStringLiteral("btnClearPhoto"));
@@ -241,13 +241,15 @@ public:
 
         gridLayout->addWidget(btnSetPhoto, 0, 0, 1, 1);
 
-        pushButton_4 = new QPushButton(gridLayoutWidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        btnCancel = new QPushButton(gridLayoutWidget);
+        btnCancel->setObjectName(QStringLiteral("btnCancel"));
 
-        gridLayout->addWidget(pushButton_4, 3, 0, 1, 1);
+        gridLayout->addWidget(btnCancel, 3, 0, 1, 1);
 
 
         retranslateUi(WDialog);
+        QObject::connect(btnOk, SIGNAL(clicked()), WDialog, SLOT(accept()));
+        QObject::connect(btnCancel, SIGNAL(clicked()), WDialog, SLOT(reject()));
 
         QMetaObject::connectSlotsByName(WDialog);
     } // setupUi
@@ -287,10 +289,10 @@ public:
         label_15->setText(QApplication::translate("WDialog", "\345\244\207\346\263\250", Q_NULLPTR));
         label_17->setText(QApplication::translate("WDialog", "photo", Q_NULLPTR));
         dbLabPhoto->setText(QApplication::translate("WDialog", "\347\205\247\347\211\207", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("WDialog", "\347\241\256\345\256\232", Q_NULLPTR));
+        btnOk->setText(QApplication::translate("WDialog", "\347\241\256\345\256\232", Q_NULLPTR));
         btnClearPhoto->setText(QApplication::translate("WDialog", "\346\270\205\351\231\244\347\205\247\347\211\207", Q_NULLPTR));
         btnSetPhoto->setText(QApplication::translate("WDialog", "\345\257\274\345\205\245\347\205\247\347\211\207", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("WDialog", "\345\217\226\346\266\210", Q_NULLPTR));
+        btnCancel->setText(QApplication::translate("WDialog", "\345\217\226\346\266\210", Q_NULLPTR));
     } // retranslateUi
 
 };

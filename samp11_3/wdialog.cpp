@@ -51,9 +51,6 @@ void WDialog::setUpdateRecord(QSqlRecord &recData)
 void WDialog::setInsertRecord(QSqlRecord &recData)
 {
     //插入记录,无需更新界面显示,要存储recData的结构
-
-    //这个电脑也是你们做的  操你们妈的  这回shift松开的快点了
-
     mRecord = recData;
     ui->dbSpinEmpNo->setEnabled(true);
     setWindowTitle("插入记录");
@@ -89,7 +86,9 @@ void WDialog::on_btnClearPhoto_clicked()
 void WDialog::on_btnSetPhoto_clicked()
 {
     //设置照片
-    QString aFile = QFileDialog::getOpenFileName(this,"选择图片","","照片(*.jsp *.png)");
+//    QString aFile = QFileDialog::getOpenFileName(this,"选择图片","","照片(*.jsp *.png)");
+
+    QString aFile = "/Users/wangjiankang/Downloads/icons/appicon.png";
 
     if(aFile.isEmpty())
     {
