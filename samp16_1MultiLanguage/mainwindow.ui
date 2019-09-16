@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>612</width>
+    <height>370</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>591</width>
+      <height>291</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>612</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menutest">
+    <property name="title">
+     <string>test</string>
+    </property>
+    <addaction name="actiontest1"/>
+    <addaction name="separator"/>
+    <addaction name="actiontest2"/>
+   </widget>
+   <addaction name="menutest"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actTab_SetSize"/>
+   <addaction name="actTab_SetHeader"/>
+   <addaction name="actTab_Locate"/>
+   <addaction name="actQuit"/>
+   <addaction name="separator"/>
+   <addaction name="actCN"/>
+   <addaction name="actEN"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actTab_SetSize">
+   <property name="text">
+    <string>设置行数列数</string>
+   </property>
+   <property name="toolTip">
+    <string>设置行数列数</string>
+   </property>
+  </action>
+  <action name="actTab_SetHeader">
+   <property name="text">
+    <string>设置表头标题</string>
+   </property>
+   <property name="toolTip">
+    <string>设置表头标题</string>
+   </property>
+  </action>
+  <action name="actTab_Locate">
+   <property name="text">
+    <string>定位单元格</string>
+   </property>
+   <property name="toolTip">
+    <string>定位单元格</string>
+   </property>
+  </action>
+  <action name="actQuit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+   <property name="toolTip">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="actCN">
+   <property name="text">
+    <string>中文</string>
+   </property>
+   <property name="toolTip">
+    <string>中文</string>
+   </property>
+  </action>
+  <action name="actEN">
+   <property name="text">
+    <string>英文</string>
+   </property>
+   <property name="toolTip">
+    <string>英文</string>
+   </property>
+  </action>
+  <action name="actiontest1">
+   <property name="text">
+    <string>test1</string>
+   </property>
+  </action>
+  <action name="actiontest2">
+   <property name="text">
+    <string>test2</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>305</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

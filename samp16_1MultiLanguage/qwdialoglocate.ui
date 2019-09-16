@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QWDialogLocate</class>
+ <widget class="QDialog" name="QWDialogLocate">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>381</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QSpinBox" name="rowSpinBox"/>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="btnClose">
+      <property name="text">
+       <string>关闭</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="btnSetText">
+      <property name="text">
+       <string>设定文字</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QSpinBox" name="colSpinBox"/>
+    </item>
+    <item row="0" column="1">
+     <widget class="QCheckBox" name="colCheckBox">
+      <property name="text">
+       <string>列增</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QCheckBox" name="rowCheckBox">
+      <property name="text">
+       <string>行增</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>设定文字</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="edtCaption">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>230</y>
+     <width>251</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
