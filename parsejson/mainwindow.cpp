@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    mUrl = "http://italwebapi2.86sb.com/wap/v1/app-brand/index";
 }
 
 MainWindow::~MainWindow()
@@ -21,6 +22,8 @@ void MainWindow::finishedSlot(QNetworkReply * reply)
 {
     if (reply->error() == QNetworkReply::NoError)
     {
+        qDebug() << "status code:" << reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt() << endl;
+
         QByteArray bytes = reply->readAll();
 
         qDebug() << bytes;
@@ -110,19 +113,19 @@ void MainWindow::parseJson(QByteArray bytes)
             int k = 0;
             QString t = "";
 
-            if (i == 0)
+            switch (i)
             {
-                v = info["a"].toInt();
-                k = info["k"].toInt();
-                t = info["t"].toString();
-            }
-            else if (i == 1)
-            {
-                v = info["b"].toInt();
-            }
-            else if (i == 2)
-            {
-                v = info["c"].toInt();
+                case 0:
+                    v = info["a"].toInt();
+                    k = info["k"].toInt();
+                    t = info["t"].toString();
+                    break;
+                case 1:
+                    v = info["b"].toInt();
+                    break;
+                case 2:
+                    v = info["c"].toInt();
+                    break;
             }
 
             qDebug() << v << "|" << k << "|" << t;
@@ -131,4 +134,177 @@ void MainWindow::parseJson(QByteArray bytes)
         qDebug() << endl;
     }
 
+}
+
+void MainWindow::on_sendOldSite_clicked()
+{
+//    QMessageBox::information(NULL, "请求老网站", "text", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+
+    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
+    connect(accessManager, SIGNAL(finished(QNetworkReply *)), this, SLOT(finishedSlotOldSite(QNetworkReply *)));
+
+    QNetworkRequest request;
+
+    QString url = mUrl;
+//    QString loginName = "login_name";
+    QString userName = ui->lineEdit->text();
+    mUserName = userName;
+
+    //krsort($info);
+    //QString appID = "tsYRir9v100000";
+    //QString appSecret = "JFA9iok4y26pKP7A0U";
+    //$token = md5(($this->appID).'&'.($this->appSecret).http_build_query($info));
+
+    QMap<QString, QString> params;
+//    params["verify_code"] = "235817";
+    params["login_name"] = userName;
+
+    QString str =buildQueryString(params);
+
+    qDebug() << params << endl;
+    qDebug() << str << endl;
+
+    QString tmp = QString("%1&%2%3").arg(appID).arg(appSecret).arg(str);
+    QString token = getOldSiteToken(tmp);
+    url = url.append("?").append(str);
+
+    request.setUrl(QUrl(url));
+
+    //header
+    setOldSiteHeader(request, "sms", token);
+
+    //get
+    accessManager->get(request);
+}
+
+void MainWindow::finishedSlotOldSite(QNetworkReply * reply)
+{
+    if (reply->error() == QNetworkReply::NoError)
+    {
+        qDebug() << "status code:" << reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt() << endl;
+
+        QByteArray bytes = reply->readAll();
+
+        qDebug() << bytes;
+
+        ui->oldSiteTextEdit->setText(bytes);
+    }
+    else
+    {
+        qDebug() << "finishedSlot error here!";
+        qDebug("found error ... code : %d\n", (int)reply->error());
+        qDebug(qPrintable(reply->errorString()));
+    }
+
+    reply->deleteLater();
+}
+
+void MainWindow::setOldSiteHeader(QNetworkRequest & request, QString ways, QString token)
+{
+    QDateTime dateTime = QDateTime::currentDateTime();
+    QString currentDate = dateTime.toString("yyyy-MM-dd hh:mm:ss");
+
+    qDebug() << currentDate << endl;
+
+    request.setRawHeader("ways", ways.toUtf8());
+    request.setRawHeader("sendat", currentDate.toUtf8());
+    request.setRawHeader("appkey", "tsYRir9v100000");
+    request.setRawHeader("token", token.toUtf8());
+}
+
+QString MainWindow::getOldSiteToken(QString key)
+{
+    QString md5;
+    QByteArray bb;
+
+    bb = QCryptographicHash::hash (key.toUtf8(), QCryptographicHash::Md5);
+    md5.append(bb.toHex());
+
+    return md5;
+}
+
+void MainWindow::on_login_clicked()
+{
+    qDebug() << mUserName << endl;
+
+    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
+    connect(accessManager, SIGNAL(finished(QNetworkReply *)), this, SLOT(finishedSlotOldSiteLogin(QNetworkReply *)));
+
+    QNetworkRequest request;
+
+    QString url = mUrl;
+
+    QByteArray bb = QCryptographicHash::hash (QString("A-C-D").toUtf8(), QCryptographicHash::Md5);
+
+    QMap<QString, QString> params;
+    params["verify_code"] = ui->verify_code->text();
+    params["login_name"] = mUserName;
+    params["source"] = "Qt";
+    params["device_id"] = bb.toHex();
+
+    QString str = buildQueryString(params);
+
+    qDebug() << str << endl;
+
+    QString tmp = QString("%1&%2%3").arg(appID).arg(appSecret).arg(str);
+    QString token = getOldSiteToken(tmp);
+
+    qDebug() <<  "post token" << token << endl;
+    qDebug() <<  "tmp " << tmp << endl;
+
+    request.setUrl(QUrl(url));
+
+    //header
+    setOldSiteHeader(request, "login", token);
+
+    QByteArray postData;
+
+//    for (QMap<QString, QString>::ConstIterator ite = params.constBegin(); ite != params.constEnd(); ++ite)
+//    {
+//        postData.append(QString("%1=%2").arg(ite.key()).arg(ite.value()));
+//    }
+    postData.append(str);
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+
+    //post
+    accessManager->post(request, postData);
+}
+
+
+QString MainWindow::buildQueryString(QMap<QString, QString> params)
+{
+    QStringList tmp1;
+
+    for (QMap<QString, QString>::ConstIterator ite = --params.constEnd(); ite != --params.constBegin(); ite--)
+    {
+        tmp1.append(QString("%1=%2").arg(ite.key()).arg(ite.value()));
+        qDebug() << ite.key() << "=" << ite.value();
+    }
+
+    qDebug() << tmp1 << endl;
+
+    return tmp1.join("&");
+}
+
+void MainWindow::finishedSlotOldSiteLogin(QNetworkReply * reply)
+{
+    if (reply->error() == QNetworkReply::NoError)
+    {
+        qDebug() << "status code:" << reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt() << endl;
+
+        QByteArray bytes = reply->readAll();
+
+        qDebug() << bytes;
+
+        ui->loginText->setPlainText(bytes);
+    }
+    else
+    {
+        qDebug() << "finishedSlot error here!";
+        qDebug("found error ... code : %d\n", (int)reply->error());
+        qDebug(qPrintable(reply->errorString()));
+    }
+
+    reply->deleteLater();
 }

@@ -30,8 +30,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>160</y>
+      <x>30</x>
+      <y>70</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>250</y>
+      <x>30</x>
+      <y>160</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -56,8 +56,8 @@
    <widget class="QTextEdit" name="getTextEdit">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>150</y>
+      <x>140</x>
+      <y>60</y>
       <width>521</width>
       <height>81</height>
      </rect>
@@ -66,11 +66,103 @@
    <widget class="QTextEdit" name="postTextEdit">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>250</y>
+      <x>140</x>
+      <y>160</y>
       <width>521</width>
       <height>81</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sendOldSite">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>250</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>请求oldsite_SMS</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="oldSiteTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>280</y>
+      <width>521</width>
+      <height>71</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>250</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>250</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>crm用户名</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="login">
+    <property name="geometry">
+     <rect>
+      <x>14</x>
+      <y>370</y>
+      <width>101</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>login_oldsite</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="loginText">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>400</y>
+      <width>541</width>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="verify_code">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>370</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>370</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>验证码</string>
     </property>
    </widget>
   </widget>
